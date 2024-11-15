@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Registration and Diagnosis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img src="logo.png" alt="Logo" class="logo">
+      <h3>Choose Your Action!</h3>
+      <button onclick="showScreen('organization-registration')">Organization Registration</button>
+      <button onclick="showScreen('patient-registration')">Patient Registration</button>
+      <button onclick="showScreen('doctor-diagnosis')">Doctor Diagnosis</button>
+      <button onclick="showScreen('download-data')">Download Data</button>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <!-- Start Screen -->
+      <div class="start-screen screen active">
+        <h2>Welcome to Patient Registration and Diagnosis</h2>
+        <p>Select an action from the sidebar to get started.</p>
+      </div>
+
+      <!-- Organization Registration Screen -->
+      <div id="organization-registration" class="hidden screen">
+        <h2>Organization Registration</h2>
+        <input id="org-name" type="text" placeholder="Organization Name">
+        <input id="org-location" type="text" placeholder="Location">
+        <input id="org-date" type="date" placeholder="Date">
+        <button onclick="saveOrganization()">Save and Register</button>
+      </div>
+
+      <!-- Patient Registration Screen -->
+      <div id="patient-registration" class="hidden screen">
+        <h2>Patient Registration</h2>
+        <select id="org-select"></select>
+        <input id="patient-name" type="text" placeholder="Name">
+        <input id="patient-age" type="number" placeholder="Age">
+        <input id="patient-weight" type="number" placeholder="Weight">
+        <select id="patient-blood-group">
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <!-- Other blood groups -->
+        </select>
+        <select id="patient-gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <button onclick="registerPatient()">Register Patient</button>
+      </div>
+
+      <!-- Doctor Diagnosis Screen -->
+      <div id="doctor-diagnosis" class="hidden screen">
+        <h2>Doctor Diagnosis</h2>
+        <input id="patient-token" type="text" placeholder="Enter Patient Token">
+        <button onclick="fetchPatientDetails()">Fetch Patient Details</button>
+        <div id="patient-details"></div>
+        <textarea id="breast-cancer" placeholder="Breast Cancer Diagnosis"></textarea>
+        <textarea id="dental" placeholder="Dental Diagnosis"></textarea>
+        <textarea id="eye-check" placeholder="Eye Check Diagnosis"></textarea>
+        <button onclick="saveDiagnosis()">Save Diagnosis</button>
+      </div>
+
+      <!-- Download Data Screen -->
+      <div id="download-data" class="hidden screen">
+        <h2>Download Data</h2>
+        <button onclick="downloadData()">Download Data (JSON)</button>
+        <button onclick="downloadDataCSV()">Download Data (CSV)</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
